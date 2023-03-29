@@ -1,11 +1,35 @@
 package br.com.ufape.bcc.taskhive.dado;
 
-import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaAbstrata;
+import org.springframework.stereotype.Repository;
 
-public interface RepositorioTarefaAbstrata {
-    void salvar(TarefaAbstrata tarefa);
-    TarefaAbstrata buscarPorId(long id);
-    void atualizar(TarefaAbstrata tarefa);
-    void excluir(TarefaAbstrata tarefa);
-}
+import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaAbstrata;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+@Repository
+public class RepositorioTarefaAbstrata implements RepositorioTarefaAbstrataInterface {
     
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public void salvar(TarefaAbstrata tarefa) {
+        entityManager.persist(tarefa);
+    }
+
+    @Override
+    public TarefaAbstrata buscarPorId(long id) {
+        return entityManager.find(TarefaAbstrata.class, id);
+    }
+
+    @Override
+    public void atualizar(TarefaAbstrata tarefa) {
+        entityManager.merge(tarefa);
+    }
+
+    @Override
+    public void excluir(TarefaAbstrata tarefa) {
+        entityManager.remove(tarefa);
+    }
+    
+}
