@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.ufape.bcc.taskhive.dado.RepositorioTarefaAbstrata;
+import br.com.ufape.bcc.taskhive.dado.RepositorioTarefaAbstrataInterface;
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaAbstrata;
 
 public class NegocioTarefaAbstrata implements InterfaceNegocioTarefaAbstrata {
     @Autowired
-    private RepositorioTarefaAbstrata tarefaAbstrataRepositorio;
+    private RepositorioTarefaAbstrataInterface tarefaAbstrataRepositorio;
 
     @Override
     public void salvarTarefa (TarefaAbstrata tarefa) {
