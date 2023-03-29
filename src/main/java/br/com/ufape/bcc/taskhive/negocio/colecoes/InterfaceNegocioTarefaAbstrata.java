@@ -4,7 +4,8 @@ import java.util.List;
 
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaAbstrata;
 
-public interface InterfaceCadastroTarefa {
+public interface InterfaceNegocioTarefaAbstrata {
+	
     List<TarefaAbstrata> procurarTarefa(String titulo);
 
     TarefaAbstrata procurarTarefaId(long id);
@@ -15,7 +16,7 @@ public interface InterfaceCadastroTarefa {
 
 	void deletarTarefaId(Long id);
 
-	TarefaAbstrata salvarTarefa(TarefaAbstrata entity);
+	void salvarTarefa(TarefaAbstrata entity);
 
 	void deletarTarefa(TarefaAbstrata tarefa);
 }
