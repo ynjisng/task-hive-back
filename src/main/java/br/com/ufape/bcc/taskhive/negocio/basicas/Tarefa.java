@@ -1,5 +1,8 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Tarefa extends TarefaAbstrata {
     private String descricao;
 

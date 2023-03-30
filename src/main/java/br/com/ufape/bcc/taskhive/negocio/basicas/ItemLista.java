@@ -10,7 +10,7 @@ public class ItemLista {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     
     private String item;
     private boolean checked;

@@ -11,10 +11,10 @@ import jakarta.persistence.Id;
 public abstract class TarefaAbstrata {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String titulo;
-	private String prioriade;
+	private String prioridade;
 
 	//private Categoria categoria;
 	//private Comentario comentario;
@@ -48,12 +48,12 @@ public abstract class TarefaAbstrata {
 		this.titulo = titulo;
 	}
 
-	public String getPrioriade() {
-		return prioriade;
+	public String getPrioridade() {
+		return prioridade;
 	}
 
-	public void setPrioriade(String prioriade) {
-		this.prioriade = prioriade;
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
 	}
 
 	public Date getData_criacao() {
