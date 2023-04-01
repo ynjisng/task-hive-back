@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Lembrete {
@@ -13,7 +14,7 @@ public class Lembrete {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String titulo;
-    private LocalDate data;
+    private Date data;
 
     //Construtor vazio
     public Lembrete(){
@@ -43,13 +44,4 @@ public class Lembrete {
     public void setDate(Date data){
         this.data = data;
     }
-
-    public adicionarLembrete(String titulo, LocalDate data){
-        Lembrete novoLembrete = new Lembrete(titulo, data);
-    }
-
-    //Como adicionar?
-    /* Lembrete.adicionarLembrete("Reunião com o cliente", "Discutir proposta de projeto", 
-    LocalDate.of(2023, 4, 3)); */
-
 }
