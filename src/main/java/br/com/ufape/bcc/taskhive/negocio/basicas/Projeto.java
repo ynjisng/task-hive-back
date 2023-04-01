@@ -6,21 +6,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Usuario {
+public class Projeto {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    private String email;
-    private String senha;
+    private String descricao;
+    private boolean arquivado;
+    private boolean excluido;
     //metodos
     //construtores
-    public Usuario() {}
-    public Usuario(String nome, String email, String senha) {
+    public Projeto() {}
+    public Projeto(String nome, String descricao) {
         this.nome = nome;
-        this.email = email;
-        this.senha = senha;
+        this.descricao = descricao;
     }
     //getters and setters
     public long getId() {
@@ -35,16 +35,22 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getEmail() {
-        return email;
+    public String getDescricao() {
+        return descricao;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    public String getSenha() {
-        return senha;
+    public boolean isArquivado() {
+        return arquivado;
     }
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setArquivado(boolean arquivado) {
+        this.arquivado = arquivado;
+    }
+    public boolean isExcluido() {
+        return excluido;
+    }
+    public void setExcluido(boolean excluido) {
+        this.excluido = excluido;
     }
 }
