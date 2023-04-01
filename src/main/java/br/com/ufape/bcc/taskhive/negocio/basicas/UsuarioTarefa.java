@@ -1,7 +1,14 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+@Entity
 public class UsuarioTarefa {
     //atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long idUsuario;
     private long idTarefa;
