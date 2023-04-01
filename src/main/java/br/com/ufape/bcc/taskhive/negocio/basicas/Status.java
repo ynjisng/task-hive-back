@@ -3,6 +3,7 @@ package br.com.ufape.bcc.taskhive.negocio.basicas;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Status {
@@ -45,12 +46,5 @@ public class Status {
     public void setDescricao(String descricao){
         this.descricao = descricao;
     }
-
-    public static void adicionarStatus(String nome, String descricao){
-        Status novoStatus = new Status(nome, descricao);
-    }
-
-    //Exemplo:
-    //Status.adicionarStatus(1, "Em andamento", "Tarefa em andamento.");
 }
 
