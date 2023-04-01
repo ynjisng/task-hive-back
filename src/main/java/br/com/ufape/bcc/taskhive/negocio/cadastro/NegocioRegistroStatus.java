@@ -1,4 +1,4 @@
-package br.com.ufape.bcc.taskhive.negocio.colecoes;
+package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
 public class NegocioRegistroStatus {
     
