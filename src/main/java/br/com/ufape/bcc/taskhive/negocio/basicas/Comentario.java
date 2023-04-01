@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+
 @Entity
 public class Comentario {
     @Id
@@ -37,5 +38,6 @@ public class Comentario {
     public void setMensagem(){
         this.mensagem = mensagem;
     }
+
 }
 

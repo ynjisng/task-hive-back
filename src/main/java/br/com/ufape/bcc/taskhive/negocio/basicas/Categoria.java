@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+
 @Entity
 public class Categoria {
     @Id
@@ -12,6 +13,7 @@ public class Categoria {
     private long id;
     private String nome;
     private List<string> subcategorias;
+
 
     public Categoria(String nome, long id){
         this.id = id;
@@ -39,4 +41,5 @@ public class Categoria {
     public void setNome(String nome){
         this.nome = nome;
     }
+
 }
