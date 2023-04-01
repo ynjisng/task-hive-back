@@ -49,6 +49,8 @@ public class RegistroStatus {
 		this.data_registro = data_registro;
 	}
 
-	
+	public void mudarStatus(){
+		
+	}
 	
 }

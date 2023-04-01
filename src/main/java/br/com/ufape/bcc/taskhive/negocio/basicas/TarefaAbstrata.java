@@ -2,6 +2,8 @@ package br.com.ufape.bcc.taskhive.negocio.basicas;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +24,13 @@ public abstract class TarefaAbstrata {
 	//private Usuario user;
 	//private Projeto projeto;
 
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_criacao;
+
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_conclusao;
+
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_prevista;
 
 	private boolean arquivado;
@@ -61,7 +68,8 @@ public abstract class TarefaAbstrata {
 	}
 
 	public void setData_criacao(Date data_criacao) {
-		this.data_criacao = data_criacao;
+		Date dataHoraAtual = new Date();
+		this.data_criacao = dataHoraAtual;
 	}
 
 	public Date getData_conclusao() {
