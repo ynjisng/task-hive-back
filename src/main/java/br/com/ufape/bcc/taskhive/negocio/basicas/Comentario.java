@@ -1,3 +1,5 @@
+package br.com.ufape.bcc.taskhive.negocio.basicas;
+
 import jakarta.persistence.Id;
 
 public class Comentario {
