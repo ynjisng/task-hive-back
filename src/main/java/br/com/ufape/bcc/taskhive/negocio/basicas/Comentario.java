@@ -34,28 +34,9 @@ public class Comentario {
         return mensagem;
     }
 
-    public void setMensagem(){
+    public void setMensagem(String mensagem){
         this.mensagem = mensagem;
     }
-
-    /* public void adicionarComentario(String novaMensagem){
-        Comentario novoComentario = new Comentario(novaMensagem);
-
-        //Adiciona o novo comentário à lista de comentários
-        listaDeComentarios.add(novoComentario);
-    } */
-    
-    //Como chamar:
-    //Comentário meuComentario = new Comentário("Lucas", "Ótimo artigo!");
-    //meuComentario.adicionarComentario("Sara", "Concordo com você, Lucas.");
-
-    public void atualizarComentario(String novaMensagem){
-        this.mensagem = mensagem;
-    }
-
-    //Como chamar:
-    //Comentário meuComentario = new Comentário("João", "Ótimo artigo!");
-    //meuComentario.atualizarComentario("Gostei bastante, parabéns!");
 
 }
 
