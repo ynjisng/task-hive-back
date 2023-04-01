@@ -3,6 +3,7 @@ package br.com.ufape.bcc.taskhive.negocio.basicas;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Comentario {
@@ -37,12 +38,12 @@ public class Comentario {
         this.mensagem = mensagem;
     }
 
-    public void adicionarComentario(String novaMensagem){
+    /* public void adicionarComentario(String novaMensagem){
         Comentario novoComentario = new Comentario(novaMensagem);
 
         //Adiciona o novo comentário à lista de comentários
         listaDeComentarios.add(novoComentario);
-    }
+    } */
     
     //Como chamar:
     //Comentário meuComentario = new Comentário("Lucas", "Ótimo artigo!");

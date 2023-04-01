@@ -1,8 +1,13 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
 import jakarta.persistence.Id;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Categoria {
@@ -10,9 +15,9 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    private List<string> subcategorias;
+    private List<String> subcategorias;
 
-    public Caregoria(String nome, long id){
+    public Categoria(String nome, long id){
         this.id = id;
         this.nome = nome;
         this.subcategorias = new ArrayList<String>();
@@ -39,7 +44,7 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public adicionarCategoria(String subcategoria){
+    public void adicionarCategoria(String subcategoria){
         // Adiciona a nova subcategoria à lista de subcategorias
         subcategorias.add(subcategoria);
     }
@@ -49,7 +54,7 @@ public class Categoria {
     //minhaCategoria.adicionarCategoria("Celulares");
     //minhaCategoria.adicionarCategoria("Tablets");
 
-    public atualizarCategoria(String novoNome){
+    public void atualizarCategoria(String novoNome){
         this.nome = novoNome;
     }
 }
