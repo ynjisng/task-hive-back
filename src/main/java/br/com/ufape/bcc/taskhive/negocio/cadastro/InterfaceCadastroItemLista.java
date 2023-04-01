@@ -1,6 +1,5 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
-public class CadastroRegistroStatus implements InterfaceCadastroItemLista{
+public interface InterfaceCadastroItemLista {
         // ANALISAR A NECESSIDADE
-
 }

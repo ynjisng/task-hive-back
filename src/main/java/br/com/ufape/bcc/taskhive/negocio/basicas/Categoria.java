@@ -1,10 +1,13 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
 import jakarta.persistence.Id;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
 
 @Entity
 public class Categoria {
@@ -12,8 +15,7 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    private List<string> subcategorias;
-
+    private List<String> subcategorias;
 
     public Categoria(String nome, long id){
         this.id = id;
