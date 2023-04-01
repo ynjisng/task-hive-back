@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.ufape.bcc.taskhive.dado.RepositorioTarefaAbstrataInterface;
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaAbstrata;
 
-public class NegocioTarefaAbstrata implements InterfaceNegocioTarefaAbstrata {
+public class CadastroTarefaAbstrata implements InterfaceCadastroTarefaAbstrata {
     @Autowired
     private RepositorioTarefaAbstrataInterface tarefaAbstrataRepositorio;
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaAbstrata;
 
-public interface InterfaceNegocioTarefaAbstrata {
+public interface InterfaceCadastroTarefaAbstrata {
 	
     List<TarefaAbstrata> procurarTarefa(String titulo);
 
