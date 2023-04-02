@@ -53,4 +53,6 @@ public class Projeto {
     public void setExcluido(boolean excluido) {
         this.excluido = excluido;
     }
+    //outros projetos
+    public void gerarPercentualConclusao() {}
 }

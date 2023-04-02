@@ -1,17 +1,23 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 @Entity
 public class UsuarioTarefa {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long idUsuario;
-    private long idTarefa;
+    @ManyToOne
+    private Usuario usuario;
+    @OneToMany
+    private List<TarefaAbstrata> tarefas;
     //metodos
     //construtor
     public UsuarioTarefa() {}
@@ -22,16 +28,16 @@ public class UsuarioTarefa {
     public void setId(long id) {
         this.id = id;
     }
-    public long getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
-    public long getIdTarefa() {
-        return idTarefa;
+    public List<TarefaAbstrata> getTarefas() {
+        return tarefas;
     }
-    public void setIdTarefa(long idTarefa) {
-        this.idTarefa = idTarefa;
+    public void setTarefas(List<TarefaAbstrata> tarefas) {
+        this.tarefas = tarefas;
     }
 }
