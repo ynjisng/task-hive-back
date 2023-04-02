@@ -35,7 +35,7 @@ public class Comentario {
         return mensagem;
     }
 
-    public void setMensagem(){
+    public void setMensagem(String mensagem){
         this.mensagem = mensagem;
     }
 
