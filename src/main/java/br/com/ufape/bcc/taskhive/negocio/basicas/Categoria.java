@@ -17,6 +17,7 @@ public class Categoria {
     private String nome;
     private List<String> subcategorias;
 
+
     public Categoria(String nome, long id){
         this.id = id;
         this.nome = nome;
@@ -42,6 +43,14 @@ public class Categoria {
 
     public void setNome(String nome){
         this.nome = nome;
+    }
+
+    public List<String> getSubcategorias() {
+        return subcategorias;
+    }
+
+    public void setSubcategorias(List<String> subcategorias) {
+        this.subcategorias = subcategorias;
     }
 
 }
