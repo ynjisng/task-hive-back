@@ -22,11 +22,11 @@ public class CadastroTarefa implements InterfaceCadastroTarefa {
     }
 
     @Override
-    public Tarefa procurarTarefa(String titulo) throws TarefaNaoExiste {
+    public Tarefa procurarTarefa(String titulo) throws TarefaNaoExisteException {
         Tarefa tarefa = tarefaRepo.findByTitulo(titulo);
         if(tarefa != null)
             return tarefa;
-        throw new TarefaNaoExiste();
+        throw new TarefaNaoExisteException();
     }
 
     @Override

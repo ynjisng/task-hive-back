@@ -1,8 +1,8 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
-public class TarefaNaoExiste extends Exception {
+public class TarefaNaoExisteException extends Exception {
 
-    public TarefaNaoExiste() {
+    public TarefaNaoExisteException() {
         super("Tarefa não encontrada!");
     }
     

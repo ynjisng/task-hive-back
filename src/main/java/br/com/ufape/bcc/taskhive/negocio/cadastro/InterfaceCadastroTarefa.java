@@ -6,9 +6,9 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 
 public interface InterfaceCadastroTarefa {
 	
-    Tarefa procurarTarefa(String titulo) throws TarefaNaoExiste;
+    Tarefa procurarTarefa(String titulo) throws TarefaNaoExisteException;
 
-    Tarefa procurarTarefaId(Long id) throws TarefaNaoExiste;
+    Tarefa procurarTarefaId(Long id) throws TarefaNaoExisteException;
 
 	List<Tarefa> listarTarefas();
 

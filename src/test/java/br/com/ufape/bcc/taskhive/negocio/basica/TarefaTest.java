@@ -6,14 +6,14 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.ufape.bcc.taskhive.negocio.basicas.DataPrevistaIncorreta;
+import br.com.ufape.bcc.taskhive.negocio.basicas.DataPrevistaIncorretaException;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 
 public class TarefaTest {
     
     // Teste da Geração da Estimativa
     @Test
-    void testeGerarEstimativa() throws DataPrevistaIncorreta{
+    void testeGerarEstimativa() throws DataPrevistaIncorretaException{
         Date data_inicio = new Date();
         Date data_prevista = new Date(System.currentTimeMillis() + 2 * 24 * 60 * 60 * 1000);
         
