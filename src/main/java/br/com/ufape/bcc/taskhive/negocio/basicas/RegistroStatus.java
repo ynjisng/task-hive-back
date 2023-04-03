@@ -20,7 +20,8 @@ public class RegistroStatus {
 
 	private Date data_registro;
 
-	//private Status status;
+	@OneToMany
+	private List<Status> status;
 
 	public RegistroStatus() {
 	}
@@ -49,8 +50,12 @@ public class RegistroStatus {
 		this.data_registro = data_registro;
 	}
 
-	public void mudarStatus(){
-		
+	public List<Status> getStatus() {
+		return status;
+	}
+
+	public void setStatus(List<Status> status) {
+		this.status = status;
 	}
 	
 }
