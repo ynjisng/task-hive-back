@@ -31,8 +31,11 @@ public abstract class TarefaAbstrata {
 	@ManyToOne
 	private Lembrete lembrete;
 
-	//private Usuario user;
-	//private Projeto projeto;
+	@OneToMany
+	private List<Usuario> user;
+	
+	@ManyToOne
+	private Projeto projeto;
 
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_criacao;
@@ -151,16 +154,31 @@ public abstract class TarefaAbstrata {
 	public void setLembrete(Lembrete lembrete) {
 		this.lembrete = lembrete;
 	}
-
+	
+	public List<Usuario> getUser() {
+		return user;
+	}
+	
+	public void setUser(List<Usuario> user) {
+		this.user = user;
+	}
+	
+	public Projeto getProjeto() {
+		return projeto;
+	}
+	
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
+	
 	public Long gerarEstimativaTempo(Date inicio, Date previsao) throws DataPrevistaIncorreta{
 		if(inicio.compareTo(previsao) > 0){
 			throw new DataPrevistaIncorreta();
 		}
-
+	
 		Long estimativaMilissegundos = previsao.getTime() - inicio.getTime();
-    	Long estimativaDias = TimeUnit.DAYS.convert(estimativaMilissegundos, TimeUnit.MILLISECONDS);
+		Long estimativaDias = TimeUnit.DAYS.convert(estimativaMilissegundos, TimeUnit.MILLISECONDS);
 		return estimativaDias;
 	}
-
 	
 }
