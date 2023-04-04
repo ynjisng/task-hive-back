@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.ufape.bcc.taskhive.dado.RepositorioTarefa;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 
 public class CadastroTarefa implements InterfaceCadastroTarefa {
     @Autowired
@@ -35,9 +36,8 @@ public class CadastroTarefa implements InterfaceCadastroTarefa {
     }
 
     @Override
-    public List<Tarefa> listarTarefasUsuario() {
-        //return tarefaAbstrataRepositorio.findByUsuario();
-        throw new UnsupportedOperationException("Unimplemented method 'listarTarefasUsuario'");
+    public Tarefa listarTarefasUsuario(Usuario user) {
+        return tarefaRepo.findByUsuario(user);
     }
 
     /*

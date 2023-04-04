@@ -3,6 +3,7 @@ package br.com.ufape.bcc.taskhive.negocio.cadastro;
 import java.util.List;
 
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 
 public interface InterfaceCadastroTarefa {
 	
@@ -12,7 +13,7 @@ public interface InterfaceCadastroTarefa {
 
 	List<Tarefa> listarTarefas();
 
-	List<Tarefa> listarTarefasUsuario();
+	Tarefa listarTarefasUsuario(Usuario user);
 
 	void deletarTarefaId(Long id);
 

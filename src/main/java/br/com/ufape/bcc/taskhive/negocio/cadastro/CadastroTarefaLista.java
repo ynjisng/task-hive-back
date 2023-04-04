@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.ufape.bcc.taskhive.dado.RepositorioTarefaLista;
-import br.com.ufape.bcc.taskhive.negocio.basicas.ItemLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaLista;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 
 public class CadastroTarefaLista
  implements InterfaceCadastroTarefaLista {
@@ -24,11 +24,11 @@ public class CadastroTarefaLista
     }
 
     @Override
-    public TarefaLista procurarTarefa(String titulo) throws TarefaNaoExiste {
+    public TarefaLista procurarTarefa(String titulo) throws TarefaNaoExisteException {
         TarefaLista tarefa = tarefaAbstrataRepositorio.findByTitulo(titulo);
         if(tarefa != null)
             return tarefa;
-        throw new TarefaNaoExiste();
+        throw new TarefaNaoExisteException();
     }
 
     @Override
@@ -37,9 +37,11 @@ public class CadastroTarefaLista
     }
 
     @Override
-    public List<TarefaLista> listarTarefasUsuario() {
-        //return tarefaAbstrataRepositorio.findByUsuario();
-        throw new UnsupportedOperationException("Unimplemented method 'listarTarefasUsuario'");
+    public List<TarefaLista> listarTarefasUsuario(Usuario user) throws UsuarioSemTarefaException {
+        List<TarefaLista> tarefa = tarefaAbstrataRepositorio.findByUsuario(user);
+        if(tarefa != null)
+            return tarefa;
+        throw new UsuarioSemTarefaException(); // mudar exeção
     }
 
     /*
@@ -53,13 +55,6 @@ public class CadastroTarefaLista
     @Override
     public void deletarTarefa(TarefaLista tarefa) {
         tarefaAbstrataRepositorio.delete(tarefa);
-    }
-
-    /* @Override
-    public void deletarItemLista(ItemLista itemTarefa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarItemLista'");
-    } */
-    
+    }    
     
 }
