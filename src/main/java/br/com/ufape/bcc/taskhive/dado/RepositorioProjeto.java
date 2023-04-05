@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
 
 @Repository
-public interface ColecaoProjeto extends JpaRepository<Projeto, Long> {
+public interface RepositorioProjeto extends JpaRepository<Projeto, Long> {
     public List<Projeto> findByNomeContaining(String nome);
 }
