@@ -1,6 +1,8 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -8,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public abstract class TarefaAbstrata {
@@ -18,11 +22,20 @@ public abstract class TarefaAbstrata {
 	private String titulo;
 	private String prioridade;
 
-	//private Categoria categoria;
-	//private Comentario comentario;
-	//private Lembrete lembrete;
-	//private Usuario user;
-	//private Projeto projeto;
+	@ManyToOne
+	private Categoria categoria;
+
+	@OneToMany
+	private List<Comentario> comentario;
+
+	@ManyToOne
+	private Lembrete lembrete;
+
+	@OneToMany
+	private List<Usuario> user;
+	
+	@ManyToOne
+	private Projeto projeto;
 
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_criacao;
@@ -35,8 +48,18 @@ public abstract class TarefaAbstrata {
 
 	private boolean arquivado;
 	private boolean excluido;
-	
+
+	public TarefaAbstrata(String titulo, Date data_prevista) {
+		this.titulo = titulo;
+		this.data_criacao = new Date();
+		this.data_prevista = data_prevista;
+		this.arquivado = false;
+		this.excluido = false;
+	}
+
 	public TarefaAbstrata() {
+		this.arquivado = false;
+		this.excluido = false;
 	}
 
 	public long getId() {
@@ -104,4 +127,58 @@ public abstract class TarefaAbstrata {
 		this.excluido = excluido;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public List<Comentario> getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(List<Comentario> comentario) {
+		this.comentario = comentario;
+	}
+
+	public Lembrete getLembrete() {
+		return lembrete;
+	}
+
+	public void setLembrete(Lembrete lembrete) {
+		this.lembrete = lembrete;
+	}
+	
+	public List<Usuario> getUser() {
+		return user;
+	}
+	
+	public void setUser(List<Usuario> user) {
+		this.user = user;
+	}
+	
+	public Projeto getProjeto() {
+		return projeto;
+	}
+	
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
+	
+	public Long gerarEstimativaTempo(Date inicio, Date previsao) throws DataPrevistaIncorreta{
+		if(inicio.compareTo(previsao) > 0){
+			throw new DataPrevistaIncorreta();
+		}
+	
+		Long estimativaMilissegundos = previsao.getTime() - inicio.getTime();
+		Long estimativaDias = TimeUnit.DAYS.convert(estimativaMilissegundos, TimeUnit.MILLISECONDS);
+		return estimativaDias;
+	}
+	
 }

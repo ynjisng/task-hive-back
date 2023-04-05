@@ -1,8 +1,6 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
 import java.util.Date;
-import java.util.List;
-
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
