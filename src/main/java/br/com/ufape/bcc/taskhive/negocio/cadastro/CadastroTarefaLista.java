@@ -11,21 +11,21 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 public class CadastroTarefaLista
  implements InterfaceCadastroTarefaLista {
     @Autowired
-    private RepositorioTarefaLista tarefaAbstrataRepositorio;
+    private RepositorioTarefaLista tarefaListaRepo;
 
     @Override
     public void salvarTarefa (TarefaLista entity) {
-        tarefaAbstrataRepositorio.save(entity);
+        tarefaListaRepo.save(entity);
     }
 
     @Override
     public TarefaLista procurarTarefaId(Long id) {
-        return tarefaAbstrataRepositorio.findById(id).orElse(null);
+        return tarefaListaRepo.findById(id).orElse(null);
     }
 
     @Override
     public TarefaLista procurarTarefa(String titulo) throws TarefaNaoExisteException {
-        TarefaLista tarefa = tarefaAbstrataRepositorio.findByTitulo(titulo);
+        TarefaLista tarefa = tarefaListaRepo.findByTitulo(titulo);
         if(tarefa != null)
             return tarefa;
         throw new TarefaNaoExisteException();
@@ -33,12 +33,13 @@ public class CadastroTarefaLista
 
     @Override
     public List<TarefaLista> listarTarefas() {
-        return tarefaAbstrataRepositorio.findAll();
+        return tarefaListaRepo.findAll();
     }
 
     @Override
     public List<TarefaLista> listarTarefasUsuario(Usuario user) throws UsuarioSemTarefaException {
-        List<TarefaLista> tarefa = tarefaAbstrataRepositorio.findByUsuario(user);
+        //List<TarefaLista> tarefa = tarefaListaRepo.findByUsuario(user);
+        List<TarefaLista> tarefa = tarefaListaRepo.findAll();
         if(tarefa != null)
             return tarefa;
         throw new UsuarioSemTarefaException(); // mudar exeção
@@ -49,12 +50,12 @@ public class CadastroTarefaLista
      */
     @Override
     public void deletarTarefaId(Long id) {
-        tarefaAbstrataRepositorio.deleteById(id); 
+        tarefaListaRepo.deleteById(id); 
     }
 
     @Override
     public void deletarTarefa(TarefaLista tarefa) {
-        tarefaAbstrataRepositorio.delete(tarefa);
+        tarefaListaRepo.delete(tarefa);
     }    
     
 }

@@ -12,5 +12,5 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 public interface RepositorioTarefaLista extends JpaRepository<TarefaLista, Long>{
     public TarefaLista findByTitulo(String titulo);
 
-    public List<TarefaLista> findByUsuario(Usuario usuario);
+    //public List<TarefaLista> findByUsuario(Usuario usuario);
 }

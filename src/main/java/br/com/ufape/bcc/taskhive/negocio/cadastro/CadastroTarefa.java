@@ -37,7 +37,8 @@ public class CadastroTarefa implements InterfaceCadastroTarefa {
 
     @Override
     public Tarefa listarTarefasUsuario(Usuario user) {
-        return tarefaRepo.findByUsuario(user);
+        return tarefaRepo.findByTitulo(user.getNome());
+        //return tarefaRepo.findByUsuario(user);
     }
 
     /*
