@@ -171,9 +171,9 @@ public abstract class TarefaAbstrata {
 		this.projeto = projeto;
 	}
 	
-	public Long gerarEstimativaTempo(Date inicio, Date previsao) throws DataPrevistaIncorreta{
+	public Long gerarEstimativaTempo(Date inicio, Date previsao) throws DataPrevistaIncorretaException{
 		if(inicio.compareTo(previsao) > 0){
-			throw new DataPrevistaIncorreta();
+			throw new DataPrevistaIncorretaException();
 		}
 	
 		Long estimativaMilissegundos = previsao.getTime() - inicio.getTime();
