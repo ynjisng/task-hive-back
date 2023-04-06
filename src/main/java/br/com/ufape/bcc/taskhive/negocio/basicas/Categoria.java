@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-
 @Entity
 public class Categoria {
     @Id
@@ -25,9 +24,7 @@ public class Categoria {
         this.subcategorias = new ArrayList<String>();
     }
 
-    //Construtor vazio
     public Categoria(){
-
     }
 
     public long getId(){
