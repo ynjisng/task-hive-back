@@ -17,7 +17,7 @@ public interface InterfaceCadastroTarefaLista {
 
 	void deletarTarefaId(Long id);
 
-	void salvarTarefa(TarefaLista entity);
+	TarefaLista salvarTarefa(TarefaLista entity);
 
 	void deletarTarefa(TarefaLista tarefa);
 }

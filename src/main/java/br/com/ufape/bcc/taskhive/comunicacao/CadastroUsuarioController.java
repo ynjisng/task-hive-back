@@ -9,6 +9,6 @@ import br.com.ufape.bcc.taskhive.negocio.fachada.Fachada;
 @CrossOrigin
 @RestController
 public class CadastroUsuarioController {
-    @Autowired
-    private Fachada fachada;
+    /* @Autowired
+    private Fachada fachada; */
 }
