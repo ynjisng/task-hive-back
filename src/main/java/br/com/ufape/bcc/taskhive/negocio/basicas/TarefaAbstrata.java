@@ -39,7 +39,7 @@ public abstract class TarefaAbstrata {
 
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_criacao;
-
+	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data_conclusao;
 
@@ -56,17 +56,18 @@ public abstract class TarefaAbstrata {
 		this.arquivado = false;
 		this.excluido = false;
 	}
-
+	
 	public TarefaAbstrata() {
 		this.arquivado = false;
 		this.excluido = false;
+		this.data_criacao = new Date();
 	}
-
-	public long getId() {
+	
+	public Long getId() {
 		return id;
 	}
-
-	public void setId(long id) {
+	
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -81,7 +82,7 @@ public abstract class TarefaAbstrata {
 	public String getPrioridade() {
 		return prioridade;
 	}
-
+	
 	public void setPrioridade(String prioridade) {
 		this.prioridade = prioridade;
 	}
@@ -125,10 +126,6 @@ public abstract class TarefaAbstrata {
 
 	public void setExcluido(boolean excluido) {
 		this.excluido = excluido;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Categoria getCategoria() {
@@ -180,5 +177,5 @@ public abstract class TarefaAbstrata {
 		Long estimativaDias = TimeUnit.DAYS.convert(estimativaMilissegundos, TimeUnit.MILLISECONDS);
 		return estimativaDias;
 	}
-	
+
 }
