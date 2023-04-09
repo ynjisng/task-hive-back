@@ -8,4 +8,5 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 @Repository
 public interface RepositorioUsuario extends JpaRepository<Usuario, Long> {
     public Usuario findByEmail(String email);
+    public Usuario findByEmailAndSenha(String email, String senha);
 }

@@ -8,6 +8,8 @@ public interface InterfaceCadastroUsuario {
 
     Usuario procurarUsuarioEmail(String email) throws UsuarioNaoExisteException;
 
+    Usuario logarComEmailAndSenha(String email, String senha) throws UsuarioNaoExisteException;
+
     Usuario salvarUsuario(Usuario u) throws EmailRepetidoException;
 
     Usuario atualizarUsuario(Usuario u);

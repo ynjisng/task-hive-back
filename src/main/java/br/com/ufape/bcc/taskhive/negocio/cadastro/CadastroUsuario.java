@@ -25,6 +25,14 @@ public class CadastroUsuario implements InterfaceCadastroUsuario {
     }
 
     @Override
+    public Usuario logarComEmailAndSenha(String email, String senha) throws UsuarioNaoExisteException {
+        Usuario u = colecaoUsuario.findByEmailAndSenha(email, senha);
+        if(u != null)
+            return u;
+        throw new UsuarioNaoExisteException();
+    }
+
+    @Override
     public Usuario salvarUsuario(Usuario u) throws EmailRepetidoException {
         try {
             procurarUsuarioEmail(u.getEmail());

@@ -6,7 +6,7 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
 
 public interface InterfaceCadastroProjeto {
 
-    List<Projeto> procurarProjetoNome(String nome);
+    Projeto procurarProjetoNome(String nome);
 
     Projeto procurarProjetoId(long id);
 
@@ -16,6 +16,6 @@ public interface InterfaceCadastroProjeto {
 
     Projeto salvarProjeto(Projeto entity);
 
-    void deletarProjeto(Projeto projeto);
+    void deletarProjeto(Object object);
 
 }

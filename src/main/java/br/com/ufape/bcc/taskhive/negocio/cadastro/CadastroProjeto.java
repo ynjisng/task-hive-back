@@ -14,7 +14,7 @@ public class CadastroProjeto implements InterfaceCadastroProjeto {
     private RepositorioProjeto colecaoProjeto;
 
     @Override
-    public List<Projeto> procurarProjetoNome(String nome) {
+    public Projeto procurarProjetoNome(String nome) {
         return colecaoProjeto.findByNomeContaining(nome);
     }
 
@@ -39,7 +39,7 @@ public class CadastroProjeto implements InterfaceCadastroProjeto {
     }
 
     @Override
-    public void deletarProjeto(Projeto projeto) {
-        colecaoProjeto.delete(projeto);
+    public void deletarProjeto(Object entity) {
+        colecaoProjeto.delete((Projeto) entity);
     }
 }
