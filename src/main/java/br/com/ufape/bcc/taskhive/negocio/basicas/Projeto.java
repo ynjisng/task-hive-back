@@ -1,5 +1,8 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
+import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -53,6 +56,21 @@ public class Projeto {
     public void setExcluido(boolean excluido) {
         this.excluido = excluido;
     }
-    //outros projetos
-    public void gerarPercentualConclusao() {}
+    //outros metodos
+    public float gerarPercentualConclusao(List<TarefaAbstrata> tarefas) {
+        Date conclusao;
+        int totalTarefas = 0, totalTarefasConcluidas = 0;
+        for (TarefaAbstrata t : tarefas) {
+            totalTarefas++;
+            conclusao = t.getData_conclusao();
+            if (conclusao != null) {
+                totalTarefasConcluidas++;
+            }
+        }
+        if (totalTarefas == 0) {
+            return 100.0f;
+        } else {
+            return ((float) totalTarefasConcluidas / totalTarefas) * 100;
+        }
+    }
 }

@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ufape.bcc.taskhive.dado.ColecaoProjeto;
+import br.com.ufape.bcc.taskhive.dado.RepositorioProjeto;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
 
 @Service
 public class CadastroProjeto implements InterfaceCadastroProjeto {
     @Autowired
-    private ColecaoProjeto colecaoProjeto;
+    private RepositorioProjeto colecaoProjeto;
 
     @Override
-    public List<Projeto> procurarProjetoNome(String nome) {
+    public Projeto procurarProjetoNome(String nome) {
         return colecaoProjeto.findByNomeContaining(nome);
     }
 
@@ -39,7 +39,7 @@ public class CadastroProjeto implements InterfaceCadastroProjeto {
     }
 
     @Override
-    public void deletarProjeto(Projeto projeto) {
-        colecaoProjeto.delete(projeto);
+    public void deletarProjeto(Object entity) {
+        colecaoProjeto.delete((Projeto) entity);
     }
 }

@@ -1,10 +1,13 @@
 package br.com.ufape.bcc.taskhive.negocio.basicas;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Papel {
@@ -14,6 +17,8 @@ public class Papel {
     private long id;
     @ManyToOne
     private Usuario usuario;
+    @OneToMany
+    private List<Projeto> projetos;
     private String nome;
     private String descricao;
     //metodos
@@ -43,5 +48,11 @@ public class Papel {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public List<Projeto> getProjetos() {
+        return projetos;
+    }
+    public void setProjetos(List<Projeto> projetos) {
+        this.projetos = projetos;
     }
 }
