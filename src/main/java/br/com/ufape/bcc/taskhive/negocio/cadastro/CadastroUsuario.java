@@ -3,13 +3,13 @@ package br.com.ufape.bcc.taskhive.negocio.cadastro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ufape.bcc.taskhive.dado.ColecaoUsuario;
+import br.com.ufape.bcc.taskhive.dado.RepositorioUsuario;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 
 @Service
 public class CadastroUsuario implements InterfaceCadastroUsuario {
     @Autowired
-    private ColecaoUsuario colecaoUsuario;
+    private RepositorioUsuario colecaoUsuario;
     
     @Override
     public Usuario procurarUsuarioId(long id) {
@@ -19,6 +19,14 @@ public class CadastroUsuario implements InterfaceCadastroUsuario {
     @Override
     public Usuario procurarUsuarioEmail(String email) throws UsuarioNaoExisteException {
         Usuario u = colecaoUsuario.findByEmail(email);
+        if(u != null)
+            return u;
+        throw new UsuarioNaoExisteException();
+    }
+
+    @Override
+    public Usuario logarComEmailAndSenha(String email, String senha) throws UsuarioNaoExisteException {
+        Usuario u = colecaoUsuario.findByEmailAndSenha(email, senha);
         if(u != null)
             return u;
         throw new UsuarioNaoExisteException();
