@@ -19,6 +19,16 @@ public class Lembrete {
 
     }
 
+    public Lembrete(String titulo){
+        this.titulo = titulo;
+    }
+
+    public Lembrete(Long id, String titulo, Date data){
+        this.id = id;
+        this.titulo = titulo;
+        this.data = data;
+    }
+
     public long getId(){
         return id;
     }

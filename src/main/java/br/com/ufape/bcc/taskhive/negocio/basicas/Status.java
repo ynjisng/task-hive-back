@@ -14,7 +14,10 @@ public class Status {
     private String descricao;
 
     public Status(){
+    }
 
+    public Status(String nome){
+        this.nome = nome;
     }
 
     public Status(long id, String nome, String descricao){
@@ -46,6 +49,5 @@ public class Status {
     public void setDescricao(String descricao){
         this.descricao = descricao;
     }
-
 }
 

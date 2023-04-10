@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
-import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 
 @Repository
 public interface RepositorioTarefa extends JpaRepository<Tarefa, Long> {
