@@ -32,7 +32,7 @@ public class RegistroStatusController {
 		return ResponseEntity.ok(fachada.procurarRegitroId(registroId));
 	}
 
-    @GetMapping (value = "/registrostatus/{registroId}")
+    @GetMapping (value = "/registrostatus/status/{registroId}")
 	public ResponseEntity<RegistroStatus> procurarRegistroStatus(@PathVariable Long registroId) {
 		return ResponseEntity.ok(fachada.procurarRegitroId(registroId));
 	}
