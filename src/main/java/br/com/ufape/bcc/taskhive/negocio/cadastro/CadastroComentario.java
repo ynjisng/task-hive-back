@@ -5,11 +5,9 @@ import br.com.ufape.bcc.taskhive.dado.RepositorioComentario;
 
 public class CadastroComentario implements InterfaceCadastroComentario {
 
-    private String mensagem;
-    private String novaMensageme;
-
     @Autowired
     private RepositorioComentario repoComentario;
+    private String mensagem;
 
     @Override
     public void deletarComentario(String mensagem) {
