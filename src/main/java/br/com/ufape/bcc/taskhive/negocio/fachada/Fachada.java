@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import br.com.ufape.bcc.taskhive.negocio.basicas.ItemLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.RegistroStatus;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Categoria;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Comentario;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Lembrete;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
@@ -21,11 +24,17 @@ import br.com.ufape.bcc.taskhive.negocio.cadastro.TarefaNaoExisteException;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioSemTarefaException;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Papel;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.DoisStatusException;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.EmailRepetidoException;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroPapel;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroProjeto;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroUsuario;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioNaoExisteException;
+
+import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroStatus;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroCategoria;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroComentario;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroLembrete;
 
 //import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 
@@ -40,6 +49,15 @@ public class Fachada {
 	private InterfaceCadastroItemLista negocioItemLista;
 	@Autowired
 	private InterfaceCadastroRegistroStatus negocioRegistroStatus;
+
+	@Autowired
+	private InterfaceCadastroStatus negocioStatus;
+	@Autowired
+	private InterfaceCadastroCategoria negocioCategoria;
+	@Autowired
+	private InterfaceCadastroComentario negocioComentario;
+	@Autowired
+	private InterfaceCadastroLembrete negocioLembrete;
 
 	//Parte de Ricardo - classes Usuario, UsuarioTarefa, Papel e Projeto
 	@Autowired
@@ -231,5 +249,64 @@ public class Fachada {
 	public void atualizarRegistro(RegistroStatus entity){
 		negocioRegistroStatus.salvarRegistro(entity);
 	}
+
+	/* Cadastro Status */
+
+	public Object getStatus() {
+		return null;
+	}
+
+	public void salvarStatus(Status entity){
+		negocioStatus.salvarStatus(entity);
+	}
+
+	public void deletarStatus(Long id){
+		negocioStatus.deletarStatus(id);
+	}
+
+	public void adicionarStatus(String nome) throws DoisStatusException{
+		negocioStatus.adicionarStatus(nome);
+	}
+
+	/* Cadastro Categoria */
+
+	public void salvarCategoria(Categoria entity){
+		negocioCategoria.salvarCategoria(entity);
+	}
+
+	public void deletarCategoria(Long id){
+		negocioCategoria.deletarCategoria(id);
+	}
+
+	public void adicionarCategoria(String nome){
+		negocioCategoria.adicionarCategoria(nome);
+	}
+
+	/* Cadastro Comentario */
+
+	public void salvarComentario(Comentario entity){
+		negocioComentario.salvarComentario(entity);
+	}
+
+	public void deletarComentario(Long id){
+		negocioComentario.deletarComentario(id);
+	}
 	
+	public void adicionarComentario(String nome){
+		negocioComentario.adicionarComentario(nome);
+	}
+
+	/* Cadastro Lembrete */
+
+	public void salvarLembrete(Lembrete entity){
+		negocioLembrete.salvarLembrete(entity);
+	}
+
+	public void deletarLembrete(Long id){
+		negocioLembrete.deleterLembrete(id);
+	}
+
+	public void adicionarLembrete(String titulo){
+		negocioLembrete.adicionarLembrete(titulo);
+	}
 }

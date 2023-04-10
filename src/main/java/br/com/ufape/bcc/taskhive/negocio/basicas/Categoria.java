@@ -17,6 +17,9 @@ public class Categoria {
     private String nome;
     private List<String> subcategorias;
 
+    public Categoria(String nome){
+        this.nome = nome;
+    }
 
     public Categoria(String nome, long id){
         this.id = id;

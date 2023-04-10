@@ -8,4 +8,6 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Categoria;
 @Repository
 public interface RepositorioCategoria extends JpaRepository<Categoria, String> {
     public Categoria findByNome(String nome);
+
+    public Categoria findById(Long id);
 }

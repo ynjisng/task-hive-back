@@ -2,6 +2,7 @@ package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import br.com.ufape.bcc.taskhive.dado.RepositorioComentario;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Comentario;
 
 public class CadastroComentario implements InterfaceCadastroComentario {
 
@@ -10,12 +11,19 @@ public class CadastroComentario implements InterfaceCadastroComentario {
     private String mensagem;
 
     @Override
-    public void deletarComentario(String mensagem) {
-        repoComentario.findByMensagem(mensagem);
+    public void salvarComentario(Comentario entity) {
+        repoComentario.save(entity);
     }
 
     @Override
-    public void atualizarComentario(String novaMensagem) {
-        this.mensagem = novaMensagem;
+    public void deletarComentario(Long id) {
+        repoComentario.findById(id);
     }
+
+    @Override
+    public void adicionarComentario(String Comentario) {
+        Comentario novaMensagem = new Comentario(mensagem);
+        repoComentario.save(novaMensagem);
+    }
+    
 }

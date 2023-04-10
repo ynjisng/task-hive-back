@@ -10,4 +10,6 @@ public interface RepositorioComentario extends JpaRepository<Comentario, String>
     
     public Comentario findByMensagem(String mensagem);
 
+    public Comentario findById(Long id);
+
 }
