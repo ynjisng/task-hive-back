@@ -3,13 +3,14 @@ package br.com.ufape.bcc.taskhive.negocio.cadastro;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.ufape.bcc.taskhive.dado.RepositorioRegistroStatus;
 import br.com.ufape.bcc.taskhive.negocio.basicas.RegistroStatus;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 
-
+@Service
 public class CadastroRegistroStatus implements InterfaceCadastroRegistroStatus{
 
         @Autowired

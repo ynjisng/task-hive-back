@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Lembrete;
 
 public interface RepositorioLembrete extends JpaRepository<Lembrete, String>{
-    public Lembrete findByNome(String titulo);
+    public Lembrete findByTitulo(String titulo);
 }

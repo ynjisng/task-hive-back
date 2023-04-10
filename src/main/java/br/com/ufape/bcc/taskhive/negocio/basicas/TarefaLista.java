@@ -17,7 +17,7 @@ public class TarefaLista extends TarefaAbstrata {
     }    
 
     public TarefaLista(String titulo, Date data_prevista,
-            List<ItemLista> subtarefas) {
+        List<ItemLista> subtarefas) {
         super(titulo, data_prevista);
         this.subtarefas = subtarefas;
     }

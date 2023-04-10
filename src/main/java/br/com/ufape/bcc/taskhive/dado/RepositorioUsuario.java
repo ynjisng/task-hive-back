@@ -1,5 +1,12 @@
 package br.com.ufape.bcc.taskhive.dado;
 
-public class RepositorioUsuario {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
+
+@Repository
+public interface RepositorioUsuario extends JpaRepository<Usuario, Long> {
+    public Usuario findByEmail(String email);
+    public Usuario findByEmailAndSenha(String email, String senha);
 }

@@ -7,7 +7,7 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Comentario;
 
 @Repository
 public interface RepositorioComentario extends JpaRepository<Comentario, String> {
+    
     public Comentario findByMensagem(String mensagem);
 
-    public void findByNome(String mensagem);
 }

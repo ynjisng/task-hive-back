@@ -12,7 +12,7 @@ public class CadastroLembrete implements InterfaceCadastroLembrete {
 
     @Override
     public void deleterLembrete(String titulo) {
-        repoLembrete.findByNome(titulo);
+        repoLembrete.findByTitulo(titulo);
     }
 
     @Override

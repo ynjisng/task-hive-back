@@ -3,18 +3,20 @@ package br.com.ufape.bcc.taskhive.negocio.cadastro;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.ufape.bcc.taskhive.dado.RepositorioTarefa;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 
+@Service
 public class CadastroTarefa implements InterfaceCadastroTarefa {
     @Autowired
     private RepositorioTarefa tarefaRepo;
 
     @Override
-    public void salvarTarefa (Tarefa entity) {
-        tarefaRepo.save(entity);
+    public Tarefa salvarTarefa (Tarefa entity) {
+        return tarefaRepo.save(entity);
     }
 
     @Override

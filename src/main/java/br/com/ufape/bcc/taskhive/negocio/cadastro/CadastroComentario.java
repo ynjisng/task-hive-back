@@ -13,7 +13,7 @@ public class CadastroComentario implements InterfaceCadastroComentario {
 
     @Override
     public void deletarComentario(String mensagem) {
-        repoComentario.findByNome(mensagem);
+        repoComentario.findByMensagem(mensagem);
     }
 
     @Override

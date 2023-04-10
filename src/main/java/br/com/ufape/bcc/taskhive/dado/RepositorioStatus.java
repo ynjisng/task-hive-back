@@ -8,6 +8,6 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
 @Repository
 public interface RepositorioStatus extends JpaRepository<Status, String> {
 
-    public Status findByNome(String descricao);
+    public Status findByDescricao(String descricao);
     
 }

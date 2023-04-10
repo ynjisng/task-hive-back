@@ -13,14 +13,12 @@ public class Comentario {
     private long id;
     private String mensagem;
 
+    public Comentario(){
+    }
+
     public Comentario(long id, String mensagem){
         this.id = id;
         this.mensagem = mensagem;
-    }
-
-    //Construtor vazio
-    public Comentario(){
-
     }
 
     public long getId(){

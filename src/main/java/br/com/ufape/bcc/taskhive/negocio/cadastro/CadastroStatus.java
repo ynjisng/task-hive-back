@@ -12,7 +12,7 @@ public class CadastroStatus implements InterfaceCadastroStatus {
     
     @Override
     public void deletarStatus(String descricao) {
-        repoStatus.findByNome(descricao);
+        repoStatus.findByDescricao(descricao);
     }
 
     @Override
