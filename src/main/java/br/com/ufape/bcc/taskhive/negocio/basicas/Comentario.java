@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+
 @Entity
 public class Comentario {
     @Id
@@ -12,14 +13,16 @@ public class Comentario {
     private long id;
     private String mensagem;
 
-    public Comentario(long id, String mensagem){
-        this.id = id;
+    public Comentario(){
+    }
+
+    public Comentario(String mensagem){
         this.mensagem = mensagem;
     }
 
-    //Construtor vazio
-    public Comentario(){
-
+    public Comentario(long id, String mensagem){
+        this.id = id;
+        this.mensagem = mensagem;
     }
 
     public long getId(){
