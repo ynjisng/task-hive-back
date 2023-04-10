@@ -1,9 +1,13 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
+import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
+
 public interface InterfaceCadastroStatus {
 
-    void deletarStatus(String descricao);
+    void deletarStatus(Long id);
 
-    void atualizarStatus(String novaDescricao);
+    void adicionarStatus(String nome);
+
+    void salvarStatus(Status entity);
     
 }
