@@ -34,4 +34,8 @@ public class PapelController {
         return ResponseEntity.ok(fachada.procurarPapelId(papelId));
     }
 
+    @GetMapping(value="/papel/lista")
+    public ResponseEntity<Object> listarPapeis() {
+        return ResponseEntity.ok(fachada.listarPapeis());
+    }
 }

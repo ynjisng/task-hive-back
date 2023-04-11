@@ -99,6 +99,10 @@ public class Fachada {
         return cadastroPapel.procurarPapelId(papelId);
     }
 
+	public Object listarPapeis() {
+        return cadastroPapel.listarPapeis();
+    }
+
     //@Autowired
 	//private InterfaceNegocioTarefa negocioTarefa;
 
