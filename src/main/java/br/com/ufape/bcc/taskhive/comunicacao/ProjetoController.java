@@ -1,5 +1,7 @@
 package br.com.ufape.bcc.taskhive.comunicacao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +32,12 @@ public class ProjetoController {
     }
 
     @GetMapping(value="/projeto/{projetoId}")
-    public ResponseEntity<Object> carregarUser(@PathVariable long projetoId) {
+    public ResponseEntity<Projeto> carregarProjeto(@PathVariable long projetoId) {
         return ResponseEntity.ok(fachada.procurarProjetoId(projetoId));
     }
 
     @GetMapping(value="/projeto/lista")
-    public ResponseEntity<Object> listarProjetos() {
+    public ResponseEntity<List<Projeto>> listarProjetos() {
         return ResponseEntity.ok(fachada.listarProjetos());
     }
 }
