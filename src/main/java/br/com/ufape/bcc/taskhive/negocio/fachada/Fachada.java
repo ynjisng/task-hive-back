@@ -71,11 +71,11 @@ public class Fachada {
 		return cadastroUsuario.salvarUsuario(entity);
 	}
 
-    public Object procurarUsuarioId(long id) {
+    public Usuario procurarUsuarioId(long id) {
         return cadastroUsuario.procurarUsuarioId(id);
     }
 
-	public Object logarComEmailAndSenha(String email, String senha) throws UsuarioNaoExisteException {
+	public Usuario logarComEmailAndSenha(String email, String senha) throws UsuarioNaoExisteException {
 		return cadastroUsuario.logarComEmailAndSenha(email, senha);
 	}
 
@@ -83,11 +83,11 @@ public class Fachada {
 		return cadastroProjeto.salvarProjeto(entity);
 	}
 
-	public Object procurarProjetoId(long projetoId) {
+	public Projeto procurarProjetoId(long projetoId) {
 		return cadastroProjeto.procurarProjetoId(projetoId);
 	}
 
-    public Object listarProjetos() {
+    public List<Projeto> listarProjetos() {
         return cadastroProjeto.listarProjetos();
     }
 
@@ -95,12 +95,20 @@ public class Fachada {
 		return cadastroPapel.salvarPapel(p);
 	}
 
-    public Object procurarPapelId(long papelId) {
+    public Papel procurarPapelId(long papelId) {
         return cadastroPapel.procurarPapelId(papelId);
     }
 
-	public Object listarPapeis() {
+	public List<Papel> listarPapeis() {
         return cadastroPapel.listarPapeis();
+    }
+
+	public void addProjetoAoPapel(long idPapel, long idProjeto) {
+		cadastroPapel.procurarPapelId(idPapel).addProjeto(cadastroProjeto.procurarProjetoId(idProjeto));
+    }
+
+	public List<Projeto> listarProjetosNoPapel(long idPapel) {
+        return cadastroPapel.procurarPapelId(idPapel).getProjetos();
     }
 
     //@Autowired
