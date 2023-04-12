@@ -55,4 +55,8 @@ public class Papel {
     public void setProjetos(List<Projeto> projetos) {
         this.projetos = projetos;
     }
+
+    public void addProjeto(Projeto p) {
+        this.projetos.add(p);
+    }
 }

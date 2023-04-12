@@ -1,10 +1,12 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.ufape.bcc.taskhive.dado.RepositorioLembrete;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Lembrete;
 
+@Service
 public class CadastroLembrete implements InterfaceCadastroLembrete {
 
     @Autowired

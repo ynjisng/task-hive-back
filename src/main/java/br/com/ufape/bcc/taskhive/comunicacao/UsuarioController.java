@@ -34,12 +34,12 @@ public class UsuarioController {
     }
     
     @GetMapping(value="/usuario/{usuarioId}")
-    public ResponseEntity<Object> carregarUser(@PathVariable long usuarioId) {
+    public ResponseEntity<Usuario> carregarUser(@PathVariable long usuarioId) {
         return ResponseEntity.ok(fachada.procurarUsuarioId(usuarioId));
     }
 
     @GetMapping(value="/usuario/login")
-    public ResponseEntity<Object> login(@RequestBody LoginRequest dados) throws UsuarioNaoExisteException {
+    public ResponseEntity<Usuario> login(@RequestBody LoginRequest dados) throws UsuarioNaoExisteException {
         return ResponseEntity.ok(fachada.logarComEmailAndSenha(dados.getEmail(), dados.getSenha()));
     }
 }
