@@ -282,6 +282,10 @@ public class Fachada {
 		negocioStatus.adicionarStatus(nome);
 	}
 
+	public Status buscarStatusPorId(Long id) {
+        return negocioStatus.buscarStatusPorId(id);
+    }
+
 	/* Cadastro Categoria */
 
 	public void salvarCategoria(Categoria entity){
@@ -296,6 +300,10 @@ public class Fachada {
 		negocioCategoria.adicionarCategoria(nome);
 	}
 
+	public Categoria buscarCategoriaPorId(Long id) {
+        return negocioCategoria.buscarCategoriaPorId(id);
+    }
+
 	/* Cadastro Comentario */
 
 	public Comentario salvarComentario(Comentario entity){
@@ -306,9 +314,17 @@ public class Fachada {
 		negocioComentario.deletarComentario(id);
 	}
 	
-	public void adicionarComentario(String nome){
-		negocioComentario.adicionarComentario(nome);
+	public void adicionarComentario(Comentario comentario){
+		negocioComentario.adicionarComentario(comentario);
 	}
+
+	public Comentario buscarComentarioPorMensagem(String mensagem) {
+        return negocioComentario.buscarComentarioPorMensagem(mensagem);
+    }
+
+	public Comentario buscarComentarioPorId(Long id) {
+        return negocioComentario.buscarComentarioPorId(id);
+    }
 
 	/* Cadastro Lembrete */
 
@@ -323,6 +339,10 @@ public class Fachada {
 	public void adicionarLembrete(String titulo){
 		negocioLembrete.adicionarLembrete(titulo);
 	}
+
+	public Lembrete buscarLembretePorId(Long id) {
+        return negocioLembrete.buscarLembretePorId(id);
+    }
 	
 	/* 
 	 * Adicionando Chaves Estrangeiras
@@ -425,4 +445,5 @@ public class Fachada {
 			}
 		}
 	}
+
 }

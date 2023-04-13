@@ -9,4 +9,6 @@ public interface InterfaceCadastroLembrete {
     void adicionarLembrete(String titulo);
 
     void salvarLembrete(Lembrete entity);
+
+    Lembrete buscarLembretePorId(Long id);
 }

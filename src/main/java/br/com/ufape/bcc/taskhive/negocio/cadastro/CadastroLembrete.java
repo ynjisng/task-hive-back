@@ -28,4 +28,9 @@ public class CadastroLembrete implements InterfaceCadastroLembrete {
         repoLembrete.save(novoTitulo);
     }
 
+    @Override
+    public Lembrete buscarLembretePorId(Long id) {
+        return repoLembrete.findById(id);
+    }
+
 }

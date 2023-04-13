@@ -24,9 +24,17 @@ public class CadastroComentario implements InterfaceCadastroComentario {
     }
 
     @Override
-    public void adicionarComentario(String Comentario) {
-        Comentario novaMensagem = new Comentario(mensagem);
-        repoComentario.save(novaMensagem);
+    public void adicionarComentario(Comentario comentario) {
+        repoComentario.save(comentario);
+    }    
+
+    @Override
+    public Comentario buscarComentarioPorMensagem(String mensagem) {
+        return repoComentario.findByMensagem(mensagem);
     }
-    
+
+    @Override
+    public Comentario buscarComentarioPorId(Long id) {
+        return repoComentario.findById(id);
+    }
 }
