@@ -28,4 +28,9 @@ public class CadastroCategoria implements InterfaceCadastroCategoria {
         repoCategoria.save(novaCategoria);
     }
 
+    @Override
+    public Categoria buscarCategoriaPorId(Long id) {
+        return repoCategoria.findById(id);
+    }
+
 }

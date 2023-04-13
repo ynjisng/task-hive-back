@@ -27,5 +27,10 @@ public class CadastroStatus implements InterfaceCadastroStatus {
         Status novoStatus = new Status(nome);
         repoStatus.save(novoStatus);
     }
+
+    @Override
+    public Status buscarStatusPorId(Long id) {
+        return repoStatus.findById(id);
+    }
     
 }

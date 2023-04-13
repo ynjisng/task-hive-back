@@ -9,5 +9,7 @@ public interface InterfaceCadastroStatus {
     void adicionarStatus(String nome);
 
     void salvarStatus(Status entity);
+
+    Status buscarStatusPorId(Long id);
     
 }

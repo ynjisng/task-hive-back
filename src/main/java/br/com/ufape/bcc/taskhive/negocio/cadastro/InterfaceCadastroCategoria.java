@@ -10,4 +10,6 @@ public interface InterfaceCadastroCategoria {
 
     void salvarCategoria(Categoria entity);
 
+    Categoria buscarCategoriaPorId(Long id);
+
 }
