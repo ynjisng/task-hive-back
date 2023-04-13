@@ -10,34 +10,30 @@ import br.com.ufape.bcc.taskhive.negocio.basicas.ItemLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.RegistroStatus;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Categoria;
-import br.com.ufape.bcc.taskhive.negocio.basicas.Comentario;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Lembrete;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Papel;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
 
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroItemLista;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroRegistroStatus;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroTarefa;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroTarefaLista;
-
-import br.com.ufape.bcc.taskhive.negocio.cadastro.TarefaNaoExisteException;
-import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioSemTarefaException;
-import br.com.ufape.bcc.taskhive.negocio.basicas.Papel;
-import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
-import br.com.ufape.bcc.taskhive.negocio.cadastro.DoisStatusException;
-import br.com.ufape.bcc.taskhive.negocio.cadastro.EmailRepetidoException;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroPapel;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroProjeto;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroUsuario;
-import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioNaoExisteException;
-
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroStatus;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroCategoria;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroComentario;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.InterfaceCadastroLembrete;
 
-//import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.TarefaNaoExisteException;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioSemTarefaException;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.DoisStatusException;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.EmailRepetidoException;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioNaoExisteException;
 
 @Service
 public class Fachada {
@@ -112,9 +108,6 @@ public class Fachada {
         return cadastroPapel.procurarPapelId(idPapel).getProjetos();
     }
 
-    //@Autowired
-	//private InterfaceNegocioTarefa negocioTarefa;
-
     /*
 	 * Cadastro Tarefa
 	 */
@@ -156,7 +149,6 @@ public class Fachada {
 	public void deletarTarefa(Tarefa entity){
 		negocioTarefa.deletarTarefa(entity);
 	}
-
 
 	/*
 	 * Cadastro Tarefa Lista
@@ -358,5 +350,79 @@ public class Fachada {
 		lista.getComentario().add(coment);
 		negocioTarefaLista.salvarTarefa(lista);
 		return coment;
+	}
+
+	/*
+	 * Rotas de lixeira e arquivo de tarefa - tarefa lista
+	 * tipo = 1 -> Tarefa
+	 * tipo = 0 -> Tarefa Lista
+	 */
+
+	 public void enviarTarefaLixeira(Long idTarefa, boolean tipo) throws TarefaNaoExisteException, TarefaExisteLixeiraException {
+		if (tipo) {
+			Tarefa salva = negocioTarefa.procurarTarefaId(idTarefa);
+			if (salva.isExcluido()) {
+				throw new TarefaExisteLixeiraException();
+			} else {
+				salva.setExcluido(true);
+				negocioTarefa.salvarTarefa(salva);
+			}
+		} else {
+			TarefaLista salva = negocioTarefaLista.procurarTarefaId(idTarefa);
+			if (salva.isExcluido()) {
+				throw new TarefaExisteLixeiraException();
+			} else {
+				salva.setExcluido(true);
+				negocioTarefaLista.salvarTarefa(salva);
+			}
+		}
+	}
+
+	public void retirarTarefaLixeira(Long idTarefa, boolean tipo) throws TarefaNaoExisteException {
+		if (tipo) {
+			Tarefa salva = negocioTarefa.procurarTarefaId(idTarefa);
+			if (salva.isExcluido()) {
+				salva.setExcluido(false);
+				negocioTarefa.salvarTarefa(salva);	
+			}
+		} else {
+			TarefaLista salva = negocioTarefaLista.procurarTarefaId(idTarefa);
+			if (salva.isExcluido()) {
+				salva.setExcluido(false);
+				negocioTarefaLista.salvarTarefa(salva);	
+			}
+		}
+	}
+
+	public void enviarTarefaArquivo(Long idTarefa, boolean tipo) throws TarefaNaoExisteException {
+		if (tipo) {
+			Tarefa salva = negocioTarefa.procurarTarefaId(idTarefa);
+			if (!salva.isArquivado()) {
+				salva.setArquivado(true);
+				negocioTarefa.salvarTarefa(salva);
+			}			
+		} else {
+			TarefaLista salva = negocioTarefaLista.procurarTarefaId(idTarefa);
+			if (!salva.isArquivado()) {
+				salva.setArquivado(true);
+				negocioTarefaLista.salvarTarefa(salva);
+			}
+		}
+	}
+
+	public void retirarTarefaArquivo(Long idTarefa, boolean tipo) throws TarefaNaoExisteException {
+		if (tipo) {
+			Tarefa salva = negocioTarefa.procurarTarefaId(idTarefa);
+			if (salva.isArquivado()) {
+				salva.setArquivado(false);
+				negocioTarefa.salvarTarefa(salva);
+			}
+		} else {
+			TarefaLista salva = negocioTarefaLista.procurarTarefaId(idTarefa);
+			if (salva.isArquivado()) {
+				salva.setArquivado(false);
+				negocioTarefaLista.salvarTarefa(salva);
+			}
+		}
 	}
 }
