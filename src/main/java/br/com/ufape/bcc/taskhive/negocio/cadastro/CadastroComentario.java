@@ -14,8 +14,8 @@ public class CadastroComentario implements InterfaceCadastroComentario {
     private String mensagem;
 
     @Override
-    public void salvarComentario(Comentario entity) {
-        repoComentario.save(entity);
+    public Comentario salvarComentario(Comentario entity) {
+        return repoComentario.save(entity);
     }
 
     @Override
