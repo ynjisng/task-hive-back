@@ -16,6 +16,10 @@ public class Comentario {
     public Comentario(){
     }
 
+    public Comentario(Long id){
+        this.id = id;
+    }
+
     public Comentario(String mensagem){
         this.mensagem = mensagem;
     }

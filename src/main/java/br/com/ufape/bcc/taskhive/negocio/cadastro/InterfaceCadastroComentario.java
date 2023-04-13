@@ -6,8 +6,11 @@ public interface InterfaceCadastroComentario {
 
     void deletarComentario(Long id);
 
-    void adicionarComentario(String mensagem);
+    void adicionarComentario(Comentario comentario);
 
     void salvarComentario(Comentario entity);
     
+    Comentario buscarComentarioPorMensagem(String mensagem);
+
+    Comentario buscarComentarioPorId(Long id);
 }
