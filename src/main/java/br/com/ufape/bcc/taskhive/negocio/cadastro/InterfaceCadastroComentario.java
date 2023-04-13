@@ -8,6 +8,6 @@ public interface InterfaceCadastroComentario {
 
     void adicionarComentario(String mensagem);
 
-    void salvarComentario(Comentario entity);
+    Comentario salvarComentario(Comentario entity);
     
 }

@@ -40,8 +40,8 @@ public class CadastroItemLista implements InterfaceCadastroItemLista {
         }
 
         @Override
-        public void salvarItemLista(ItemLista entity) {
-                repoItemLista.save(entity);
+        public ItemLista salvarItemLista(ItemLista entity) {
+                return repoItemLista.save(entity);
         }
 
         @Override
