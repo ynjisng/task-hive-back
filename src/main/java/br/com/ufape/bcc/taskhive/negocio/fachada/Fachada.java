@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ufape.bcc.taskhive.negocio.basicas.Comentario;
 import br.com.ufape.bcc.taskhive.negocio.basicas.ItemLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.RegistroStatus;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
@@ -180,6 +181,13 @@ public class Fachada {
 	// métodos de escrita
 
 	public TarefaLista salvarTarefaLista(TarefaLista entity){
+
+		/* List<ItemLista> subtarefas = entity.getSubtarefas();
+
+		for (ItemLista subtarefa : subtarefas) {
+			negocioItemLista.salvarItemLista(subtarefa);
+		} */
+
 		return negocioTarefaLista.salvarTarefa(entity);
 	}
 
@@ -217,6 +225,8 @@ public class Fachada {
 	public List<ItemLista> listarItensLista() {
 		return negocioItemLista.listarItensLista();
 	}
+
+	// métodos de escrita
 
 	public void deletarItemListaId(Long id) {
 		negocioItemLista.deletarItemListaId(id);
@@ -296,8 +306,8 @@ public class Fachada {
 
 	/* Cadastro Comentario */
 
-	public void salvarComentario(Comentario entity){
-		negocioComentario.salvarComentario(entity);
+	public Comentario salvarComentario(Comentario entity){
+		return negocioComentario.salvarComentario(entity);
 	}
 
 	public void deletarComentario(Long id){
@@ -320,5 +330,33 @@ public class Fachada {
 
 	public void adicionarLembrete(String titulo){
 		negocioLembrete.adicionarLembrete(titulo);
+	}
+	
+	/* 
+	 * Adicionando Chaves Estrangeiras
+	 */
+	 
+	public ItemLista addItemTarefaLista (Long tarefaId, ItemLista item) throws TarefaNaoExisteException {
+		TarefaLista lista = negocioTarefaLista.procurarTarefaId(tarefaId);
+		item = negocioItemLista.salvarItemLista(item);
+		lista.getSubtarefas().add(item);
+		negocioTarefaLista.salvarTarefa(lista);
+		return item;
+	}
+	 
+	public Usuario addUsuarioTarefa (Long tarefaId, Long userId) throws TarefaNaoExisteException {
+		TarefaLista lista = negocioTarefaLista.procurarTarefaId(tarefaId);
+		Usuario user = cadastroUsuario.procurarUsuarioId(userId);
+		lista.getUser().add(user);
+		negocioTarefaLista.salvarTarefa(lista);
+		return user;
+	}
+	 
+	public Comentario addComentarioTarefa (Long tarefaId, Comentario coment) throws TarefaNaoExisteException {
+		TarefaLista lista = negocioTarefaLista.procurarTarefaId(tarefaId);
+		coment = negocioComentario.salvarComentario(coment);
+		lista.getComentario().add(coment);
+		negocioTarefaLista.salvarTarefa(lista);
+		return coment;
 	}
 }

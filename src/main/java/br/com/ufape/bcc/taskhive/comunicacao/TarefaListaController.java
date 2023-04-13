@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ufape.bcc.taskhive.negocio.basicas.Comentario;
+import br.com.ufape.bcc.taskhive.negocio.basicas.ItemLista;
 import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaLista;
+import br.com.ufape.bcc.taskhive.negocio.basicas.Usuario;
 import br.com.ufape.bcc.taskhive.negocio.cadastro.TarefaNaoExisteException;
+import br.com.ufape.bcc.taskhive.negocio.cadastro.UsuarioSemTarefaException;
 import br.com.ufape.bcc.taskhive.negocio.fachada.Fachada;
 
 @CrossOrigin
@@ -55,5 +59,32 @@ public class TarefaListaController {
         } catch(Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+	}
+
+    @PostMapping(value = "/tarefalista/{tarefaId}/item")
+	public ResponseEntity<ItemLista> adicionarSubtarefa(@RequestBody ItemLista item, @PathVariable long tarefaId) {
+		try {
+			return ResponseEntity.ok(fachada.addItemTarefaLista(tarefaId, item));
+		} catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+    @PostMapping(value = "/tarefalista/{tarefaId}/comentario")
+	public ResponseEntity<Comentario> adicionarComentarioTarefa(@RequestBody Comentario coment, @PathVariable long tarefaId) {
+		try {
+			return ResponseEntity.ok(fachada.addComentarioTarefa(tarefaId, coment));
+		} catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+    @PostMapping(value = "/tarefalista/{tarefaId}/{userId}")
+	public ResponseEntity<Usuario> adicionarUsuarioTarefa(@PathVariable long userId, @PathVariable long tarefaId) {
+		try {
+			return ResponseEntity.ok(fachada.addUsuarioTarefa(tarefaId, userId));
+		} catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 }

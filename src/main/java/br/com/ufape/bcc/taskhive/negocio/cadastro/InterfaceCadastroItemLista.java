@@ -16,7 +16,7 @@ public interface InterfaceCadastroItemLista {
 
         void deletarItemListaId(Long id);
 
-        void salvarItemLista(ItemLista entity);
+        ItemLista salvarItemLista(ItemLista entity);
 
         void deletarItemLista(ItemLista tarefa);
 }
