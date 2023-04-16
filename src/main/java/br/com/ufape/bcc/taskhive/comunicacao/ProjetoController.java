@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ufape.bcc.taskhive.negocio.basicas.Projeto;
 import br.com.ufape.bcc.taskhive.negocio.basicas.Tarefa;
+import br.com.ufape.bcc.taskhive.negocio.basicas.TarefaLista;
 import br.com.ufape.bcc.taskhive.negocio.fachada.Fachada;
 
 @CrossOrigin
@@ -44,5 +45,9 @@ public class ProjetoController {
     @GetMapping(value="/projeto/{projetoId}/tarefas")
     public ResponseEntity<List<Tarefa>> listarTarefasProjeto(@PathVariable long projetoId) {
         return ResponseEntity.ok(fachada.listarTarefasProjeto(projetoId));
+    }
+    @GetMapping(value="/projeto/{projetoId}/tarefaslista")
+    public ResponseEntity<List<TarefaLista>> listarTarefasListaProjeto(@PathVariable long projetoId) {
+        return ResponseEntity.ok(fachada.listarTarefasListaProjeto(projetoId));
     }
 }
