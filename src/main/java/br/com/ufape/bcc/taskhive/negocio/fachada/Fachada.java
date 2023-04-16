@@ -284,6 +284,10 @@ public class Fachada {
         return negocioStatus.buscarStatusPorId(id);
     }
 
+	public List<Status> listarStatus(){
+		return negocioStatus.listarStatus();
+	}
+
 	/* Cadastro Categoria */
 
 	public void salvarCategoria(Categoria entity){
@@ -301,6 +305,10 @@ public class Fachada {
 	public Categoria buscarCategoriaPorId(Long id) {
         return negocioCategoria.buscarCategoriaPorId(id);
     }
+
+	public List<Categoria> listarCategoria(){
+		return negocioCategoria.listarCategoria();
+	}
 
 	/* Cadastro Comentario */
 

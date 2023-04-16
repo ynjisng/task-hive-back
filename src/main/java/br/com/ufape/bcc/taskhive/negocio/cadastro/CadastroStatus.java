@@ -1,5 +1,7 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,11 @@ public class CadastroStatus implements InterfaceCadastroStatus {
     @Override
     public Status buscarStatusPorId(Long id) {
         return repoStatus.findById(id);
+    }
+
+    @Override
+    public List<Status> listarStatus() {
+        return repoStatus.findAll();
     }
     
 }
