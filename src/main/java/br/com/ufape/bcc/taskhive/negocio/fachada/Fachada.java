@@ -101,6 +101,18 @@ public class Fachada {
 		return tarefasUser;
 	}
 
+	public List<TarefaLista> listarTarefasListaProjeto(long projetoId) {
+		long id = cadastroProjeto.procurarProjetoId(projetoId).getId();
+		List<TarefaLista> tarefas = negocioTarefaLista.listarTarefas();
+		List<TarefaLista> tarefasUser = new ArrayList<>();
+		for (TarefaLista t : tarefas) {
+			if (t.getProjeto().getId() == id) {
+				tarefasUser.add(t);
+			}
+		}
+		return tarefasUser;
+	}
+
 	public Papel salvarPapel(Papel p) {
 		return cadastroPapel.salvarPapel(p);
 	}
