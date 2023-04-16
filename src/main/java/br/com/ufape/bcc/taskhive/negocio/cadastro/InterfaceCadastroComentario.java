@@ -8,7 +8,7 @@ public interface InterfaceCadastroComentario {
 
     void adicionarComentario(Comentario comentario);
 
-    void salvarComentario(Comentario entity);
+    Comentario salvarComentario(Comentario entity);
     
     Comentario buscarComentarioPorMensagem(String mensagem);
 
