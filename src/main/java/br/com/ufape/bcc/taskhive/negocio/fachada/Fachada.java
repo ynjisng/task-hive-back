@@ -1,5 +1,6 @@
 package br.com.ufape.bcc.taskhive.negocio.fachada;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +89,18 @@ public class Fachada {
         return cadastroProjeto.listarProjetos();
     }
 
+	public List<Tarefa> listarTarefasProjeto(long projetoId) {
+		long id = cadastroProjeto.procurarProjetoId(projetoId).getId();
+		List<Tarefa> tarefas = negocioTarefa.listarTarefas();
+		List<Tarefa> tarefasUser = new ArrayList<>();
+		for (Tarefa t : tarefas) {
+			if (t.getProjeto().getId() == id) {
+				tarefasUser.add(t);
+			}
+		}
+		return tarefasUser;
+	}
+
 	public Papel salvarPapel(Papel p) {
 		return cadastroPapel.salvarPapel(p);
 	}
@@ -98,10 +111,6 @@ public class Fachada {
 
 	public List<Papel> listarPapeis() {
         return cadastroPapel.listarPapeis();
-    }
-
-	public void addProjetoAoPapel(long idPapel, long idProjeto) {
-		cadastroPapel.procurarPapelId(idPapel).addProjeto(cadastroProjeto.procurarProjetoId(idProjeto));
     }
 
 	public List<Projeto> listarProjetosNoPapel(long idPapel) {
