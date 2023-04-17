@@ -1,5 +1,7 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
+import java.util.List;
+
 import br.com.ufape.bcc.taskhive.negocio.basicas.Status;
 
 public interface InterfaceCadastroStatus {
@@ -11,5 +13,7 @@ public interface InterfaceCadastroStatus {
     void salvarStatus(Status entity);
 
     Status buscarStatusPorId(Long id);
+
+    List<Status> listarStatus();
     
 }

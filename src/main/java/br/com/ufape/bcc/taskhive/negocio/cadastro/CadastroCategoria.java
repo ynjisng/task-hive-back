@@ -1,5 +1,7 @@
 package br.com.ufape.bcc.taskhive.negocio.cadastro;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,11 @@ public class CadastroCategoria implements InterfaceCadastroCategoria {
     @Override
     public Categoria buscarCategoriaPorId(Long id) {
         return repoCategoria.findById(id);
+    }
+
+    @Override
+    public List<Categoria> listarCategoria() {
+        return repoCategoria.findAll();
     }
 
 }
